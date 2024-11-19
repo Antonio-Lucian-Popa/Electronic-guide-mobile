@@ -1,0 +1,38 @@
+.usb-section {
+  text-align: center;
+
+  h2 {
+    font-size: 22px;
+    margin: 20px 0 10px;
+  }
+
+  .usb-image {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+
+    th {
+      background-color: #0074d9;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>USB Port Pin-Out</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="usb-section">
+    <!-- Universal Serial Bus -->
+    <h2>Universal Serial Bus (USB 2.0)</h2>
+    <img src="assets/images/usb-2.0.png" alt="USB 2.0 Diagram" class="usb-image" />
+    <table>
+      <thead>
+        <tr>
+          <th>Pin</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pin of usb2Pins">
+          <td>{{ pin.pin }}</td>
+          <td>{{ pin.name }}</td>
+          <td>{{ pin.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- USB 3.x -->
+    <h2>USB 3.x</h2>
+    <img src="assets/images/usb-3.0.png" alt="USB 3.x Diagram" class="usb-image" />
+    <table>
+      <thead>
+        <tr>
+          <th>Pin</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pin of usb3Pins">
+          <td>{{ pin.pin }}</td>
+          <td>{{ pin.name }}</td>
+          <td>{{ pin.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- USB 3.1 Type C -->
+    <h2>USB 3.1 Type C</h2>
+    <img src="assets/images/usb-c.png" alt="USB Type-C Diagram" class="usb-image" />
+    <table>
+      <thead>
+        <tr>
+          <th>Pin</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pin of usbTypeCPins">
+          <td>{{ pin.pin }}</td>
+          <td>{{ pin.name }}</td>
+          <td>{{ pin.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ion-content>

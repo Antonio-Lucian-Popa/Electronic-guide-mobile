@@ -9,6 +9,10 @@ import { CalculatoareComponent } from '../pages/calculatoare/calculatoare.compon
 import { ResistorColorCodeComponent } from '../pages/calculatoare/resistor-color-code/resistor-color-code.component';
 import { OhmsLawComponent } from '../pages/calculatoare/ohms-law/ohms-law.component';
 import { InductorColorCodeComponent } from '../pages/calculatoare/inductor-color-code/inductor-color-code.component';
+import { SchemePiniComponent } from '../pages/scheme-pini/scheme-pini.component';
+import { UsbPortComponent } from '../pages/scheme-pini/usb-port/usb-port.component';
+import { ParallelPortComponent } from '../pages/scheme-pini/parallel-port/parallel-port.component';
+import { SerialPortComponent } from '../pages/scheme-pini/serial-port/serial-port.component';
 
 
 @NgModule({
@@ -18,6 +22,6 @@ import { InductorColorCodeComponent } from '../pages/calculatoare/inductor-color
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, CalculatoareComponent, ResistorColorCodeComponent, OhmsLawComponent, InductorColorCodeComponent]
+  declarations: [HomePage, CalculatoareComponent, ResistorColorCodeComponent, OhmsLawComponent, InductorColorCodeComponent, SchemePiniComponent, UsbPortComponent, ParallelPortComponent, SerialPortComponent]
 })
 export class HomePageModule {}

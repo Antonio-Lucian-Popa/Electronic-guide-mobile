@@ -1,0 +1,17 @@
+<ion-content class="ion-padding">
+  <ion-list>
+    <!-- Lista cu porturi -->
+    <ion-item (click)="openModal(UsbPortComponent)">
+      <ion-icon slot="start" name="usb-outline"></ion-icon>
+      USB Port
+    </ion-item>
+    <ion-item (click)="openModal(ParallelPortComponent)">
+      <ion-icon slot="start" name="hardware-chip-outline"></ion-icon>
+      Serial Port
+    </ion-item>
+    <ion-item (click)="openModal(SerialPortComponent)">
+      <ion-icon slot="start" name="prism-outline"></ion-icon>
+      Parallel Port
+    </ion-item>
+  </ion-list>
+</ion-content>
