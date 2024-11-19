@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>Inductor Color Code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="container">
+    <!-- Rezistența desenată în HTML -->
+    <div class="resistor">
+      <div class="line left"></div>
+      <div class="band band1" [style.background]="band1Color"></div>
+      <div class="band band2" [style.background]="band2Color"></div>
+      <div class="band band3" [style.background]="band3Color"></div>
+      <div class="band band4" [style.background]="band4Color"></div>
+      <div class="body"></div>
+      <div class="line right"></div>
+    </div>
+
+    <!-- Selectarea culorilor -->
+    <div class="color-selection">
+      <h4>Select Colors:</h4>
+      <div class="color-columns">
+        <!-- Culori pentru fiecare bandă -->
+        <div class="color-column">
+          <h5>Band 1:</h5>
+          <div
+            class="color-box"
+            *ngFor="let color of colors"
+            [style.background]="color.color"
+            (click)="updateBandColor('band1', color)"
+          ></div>
+        </div>
+        <div class="color-column">
+          <h5>Band 2:</h5>
+          <div
+            class="color-box"
+            *ngFor="let color of colors"
+            [style.background]="color.color"
+            (click)="updateBandColor('band2', color)"
+          ></div>
+        </div>
+        <div class="color-column">
+          <h5>Multiplier:</h5>
+          <div
+            class="color-box"
+            *ngFor="let color of multipliers"
+            [style.background]="color.color"
+            (click)="updateBandColor('band3', color)"
+          ></div>
+        </div>
+        <div class="color-column">
+          <h5>Tolerance:</h5>
+          <div
+            class="color-box"
+            *ngFor="let color of tolerances"
+            [style.background]="color.color"
+            (click)="updateBandColor('band4', color)"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rezultatul calculat -->
+    <div class="result">
+      <h4>Inductance Value:</h4>
+      <p>{{ inductance }} H ± {{ tolerance }}%</p>
+    </div>
+  </div>
+</ion-content>

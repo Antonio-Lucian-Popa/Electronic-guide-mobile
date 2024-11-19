@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { CalculatoareComponent } from '../pages/calculatoare/calculatoare.component';
 import { ResistorColorCodeComponent } from '../pages/calculatoare/resistor-color-code/resistor-color-code.component';
 import { OhmsLawComponent } from '../pages/calculatoare/ohms-law/ohms-law.component';
+import { InductorColorCodeComponent } from '../pages/calculatoare/inductor-color-code/inductor-color-code.component';
 
 
 @NgModule({
@@ -17,6 +18,6 @@ import { OhmsLawComponent } from '../pages/calculatoare/ohms-law/ohms-law.compon
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, CalculatoareComponent, ResistorColorCodeComponent, OhmsLawComponent]
+  declarations: [HomePage, CalculatoareComponent, ResistorColorCodeComponent, OhmsLawComponent, InductorColorCodeComponent]
 })
 export class HomePageModule {}
