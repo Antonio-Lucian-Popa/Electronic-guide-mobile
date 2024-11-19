@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Electro Guide
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment>
+    <ion-segment-button value="calculatoare" content-id="calculatoare">
+      <ion-label>Calculatoare</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="second" content-id="second">
+      <ion-label>Scheme Pini</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-segment-view>
+    <ion-segment-content id="calculatoare">
+      <app-calculatoare></app-calculatoare>
+    </ion-segment-content>
+    <ion-segment-content id="second">Second</ion-segment-content>
+  </ion-segment-view>
+</ion-content>

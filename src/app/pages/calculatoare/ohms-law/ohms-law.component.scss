@@ -1,0 +1,44 @@
+.circuit-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.circuit-image {
+  transform: translatey(31%);
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.top-button {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.left-button {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.right-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.power-button {
+  margin-top: 20px;
+}
+
+.nearest {
+  margin-top: 20px;
+  text-align: center;
+}

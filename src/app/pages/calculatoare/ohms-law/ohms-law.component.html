@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>Ohm's Law</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="circuit-container">
+    <!-- Butoanele pentru introducerea valorilor -->
+    <ion-button class="top-button" (click)="openInputDialog('I')">
+      I {{ current }} A
+    </ion-button>
+    <ion-button class="left-button" (click)="openInputDialog('V')">
+      V {{ voltage }} V
+    </ion-button>
+    <ion-button class="right-button" (click)="openInputDialog('R')">
+      R {{ resistance }} Ω
+    </ion-button>
+
+    <!-- Imaginea circuitului -->
+    <img src="./assets/circuit.svg" alt="Circuit diagram" class="circuit-image" />
+
+    <!-- Puterea calculată -->
+    <ion-button expand="block" color="success" class="power-button">
+      Power {{ power }} W
+    </ion-button>
+  </div>
+
+  <!-- Selectarea seriei de rezistențe -->
+  <div class="nearest">
+    <h4>Use Resistor of series:</h4>
+    <ion-select placeholder="Select Series" (ionChange)="onSeriesChange($event)">
+      <ion-select-option value="E12">E12</ion-select-option>
+      <ion-select-option value="E24">E24</ion-select-option>
+      <ion-select-option value="E48">E48</ion-select-option>
+    </ion-select>
+    <p>Nearest Value in the chosen series:</p>
+    <p>
+      R = {{ nearestResistance }} Ω (Error={{ error }}%)
+    </p>
+    <ion-button expand="block" color="success">Set this value</ion-button>
+  </div>
+</ion-content>
