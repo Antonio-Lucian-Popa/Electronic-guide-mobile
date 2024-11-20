@@ -1,3 +1,80 @@
-<p>
-  serial-port works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>Serial Port</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Serial Port Header -->
+  <section>
+    <h2>Serial Port Configuration</h2>
+    <img src="assets/serial-port.png" alt="Serial Port Diagram" class="port-image" />
+    <table>
+      <thead>
+        <tr>
+          <th>Pin (DE9)</th>
+          <th>Pin (DB25)</th>
+          <th>Signal</th>
+          <th>Description</th>
+          <th>Direction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pin of serialPortPins">
+          <td [style.background]="'black'">{{ pin.pinDE9 }}</td>
+          <td [style.background]="'black'">{{ pin.pinDB25 }}</td>
+          <td [style.background]="'black'">{{ pin.signal }}</td>
+          <td [style.background]="'black'">{{ pin.description }}</td>
+          <td [style.background]="'black'">{{ pin.direction }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+   <!-- Null Modem Pin Mapping -->
+   <section>
+    <h2>Null Modem Pin Mapping</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pin From</th>
+          <th>Pin To</th>
+          <th>Signal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let map of nullModemMapping">
+          <td [style.background]="'black'">{{ map.pinFrom }}</td>
+          <td [style.background]="'black'">{{ map.pinTo }}</td>
+          <td [style.background]="'black'">{{ map.signal }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- RS232 on RJ45 -->
+  <section>
+    <h2>RS232 on RJ45</h2>
+    <img src="assets/rj45.png" alt="Serial Port Diagram" class="port-image" />
+    <table>
+      <thead>
+        <tr>
+          <th>Pin (RJ45)</th>
+          <th>Pin (DB9)</th>
+          <th>Signal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let map of rj45Mapping">
+          <td [style.background]="'black'">{{ map.pinRj45 }}</td>
+          <td [style.background]="'black'">{{ map.pinDb9 }}</td>
+          <td [style.background]="'black'">{{ map.signal }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</ion-content>
