@@ -1,0 +1,39 @@
+ion-content {
+  h2 {
+    font-size: 20px;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  img.port-image {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+
+    th {
+      background: #0074d9;
+      color: white;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 12px;
+      text-align: center;
+      background-color: #f9f9f9; /* Fundal implicit */
+    }
+
+    tbody tr:nth-child(odd) {
+      background: #f4f4f4;
+    }
+  }
+}

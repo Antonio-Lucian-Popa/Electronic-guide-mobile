@@ -1,3 +1,37 @@
-<p>
-  parallel-port works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>Parallel Port</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <section>
+    <h2>Parallel Port Pin Configuration</h2>
+    <img src="assets/parallel-port.png" alt="Parallel Port Diagram" class="port-image" />
+    <table>
+      <thead>
+        <tr>
+          <th>Pin</th>
+          <th>Signal</th>
+          <th>Description</th>
+          <th>Direction</th>
+          <th>Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pin of parallelPortPins">
+          <td [style.background]="'black'">{{ pin.pin }}</td>
+          <td [style.background]="'black'">{{ pin.signal }}</td>
+          <td [style.background]="'black'">{{ pin.description }}</td>
+          <td [style.background]="'black'">{{ pin.direction }}</td>
+          <td [style.background]="'black'">
+            {{ pin.color }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</ion-content>
