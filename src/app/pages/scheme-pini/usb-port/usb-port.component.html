@@ -11,7 +11,7 @@
   <!-- USB 2.0 Section -->
   <section>
     <h2>Universal Serial Bus (USB 2.0)</h2>
-    <img src="assets/images/usb-2.0.png" alt="USB 2.0 Diagram" class="usb-image" />
+    <img src="assets/usb2.png" alt="USB 2.0 Diagram" class="usb-image" />
     <table>
       <thead>
         <tr>
@@ -26,7 +26,7 @@
           <td>{{ pin.pin }}</td>
           <td>{{ pin.name }}</td>
           <td>{{ pin.description }}</td>
-          <td [style.background]="pin.color">{{ pin.color }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.color }}</td>
         </tr>
       </tbody>
     </table>
@@ -35,7 +35,7 @@
   <!-- USB 3.x Section -->
   <section>
     <h2>USB 3.x</h2>
-    <img src="assets/images/usb-3.0.png" alt="USB 3.x Diagram" class="usb-image" />
+    <img src="assets/usb3.png" alt="USB 3.x Diagram" class="usb-image" />
     <table>
       <thead>
         <tr>
@@ -54,7 +54,7 @@
           <td>{{ pin.typeB }}</td>
           <td>{{ pin.signal }}</td>
           <td>{{ pin.description }}</td>
-          <td [style.background]="pin.color">{{ pin.color }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.color }}</td>
         </tr>
       </tbody>
     </table>
@@ -63,7 +63,7 @@
   <!-- USB 3.1 Type-C Section -->
   <section>
     <h2>USB 3.1 Type C</h2>
-    <img src="assets/images/usb-c.png" alt="USB Type-C Diagram" class="usb-image" />
+    <img src="assets/usb3c.png" alt="USB Type-C Diagram" class="usb-image" />
     <table>
       <thead>
         <tr>

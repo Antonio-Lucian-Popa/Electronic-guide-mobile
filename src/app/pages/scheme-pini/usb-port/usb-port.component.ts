@@ -22,6 +22,7 @@ export class UsbPortComponent {
     { pin: 4, typeA: 'GND', typeB: 'GND', signal: 'Ground', description: 'Ground for Power', color: 'Black' },
     { pin: 5, typeA: 'SSTX+', typeB: 'SSTX+', signal: 'Transmit +', description: 'SuperSpeed Transmit +', color: 'Orange' },
     { pin: 6, typeA: 'SSTX-', typeB: 'SSTX-', signal: 'Transmit -', description: 'SuperSpeed Transmit -', color: 'Purple' },
+    // Adaugă mai multe culori sau lasă implicit 'transparent'
   ];
 
   usbTypeCPins = [
