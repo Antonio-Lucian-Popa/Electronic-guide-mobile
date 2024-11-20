@@ -23,9 +23,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let pin of usb2Pins">
-          <td>{{ pin.pin }}</td>
-          <td>{{ pin.name }}</td>
-          <td>{{ pin.description }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.pin }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.name }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.description }}</td>
           <td [style.background]="pin.color || '#f9f9f9'">{{ pin.color }}</td>
         </tr>
       </tbody>
@@ -49,11 +49,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let pin of usb3Pins">
-          <td>{{ pin.pin }}</td>
-          <td>{{ pin.typeA }}</td>
-          <td>{{ pin.typeB }}</td>
-          <td>{{ pin.signal }}</td>
-          <td>{{ pin.description }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.pin }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.typeA }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.typeB }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.signal }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.description }}</td>
           <td [style.background]="pin.color || '#f9f9f9'">{{ pin.color }}</td>
         </tr>
       </tbody>
@@ -74,9 +74,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let pin of usbTypeCPins">
-          <td>{{ pin.pin }}</td>
-          <td>{{ pin.signal }}</td>
-          <td>{{ pin.description }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.pin }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.signal }}</td>
+          <td [style.background]="pin.color || '#f9f9f9'">{{ pin.description }}</td>
         </tr>
       </tbody>
     </table>
