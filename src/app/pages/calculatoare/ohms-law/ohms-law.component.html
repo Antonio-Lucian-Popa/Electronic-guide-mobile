@@ -11,13 +11,13 @@
   <div class="circuit-container">
     <!-- Butoanele pentru introducerea valorilor -->
     <ion-button class="top-button" (click)="openInputDialog('I')">
-      I {{ current }} A
+      I {{ current.toFixed(2) }} A
     </ion-button>
     <ion-button class="left-button" (click)="openInputDialog('V')">
-      V {{ voltage }} V
+      V {{ voltage.toFixed(2) }} V
     </ion-button>
     <ion-button class="right-button" (click)="openInputDialog('R')">
-      R {{ resistance }} Ω
+      R {{ resistance.toFixed(2) }} Ω
     </ion-button>
 
     <!-- Imaginea circuitului -->
@@ -25,7 +25,7 @@
 
     <!-- Puterea calculată -->
     <ion-button expand="block" color="success" class="power-button">
-      Power {{ power }} W
+      Power {{ power.toFixed(2) }} W
     </ion-button>
   </div>
 
@@ -37,10 +37,14 @@
       <ion-select-option value="E24">E24</ion-select-option>
       <ion-select-option value="E48">E48</ion-select-option>
     </ion-select>
+
     <p>Nearest Value in the chosen series:</p>
     <p>
-      R = {{ nearestResistance }} Ω (Error={{ error }}%)
+      <strong>R = {{ nearestResistance }} Ω</strong> (Error = {{ error }}%)
     </p>
-    <ion-button expand="block" color="success">Set this value</ion-button>
+
+    <ion-button expand="block" color="success" (click)="setNearestResistanceValue()">
+      Set this value
+    </ion-button>
   </div>
 </ion-content>

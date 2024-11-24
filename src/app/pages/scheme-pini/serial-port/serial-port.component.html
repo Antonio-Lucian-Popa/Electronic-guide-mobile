@@ -24,11 +24,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let pin of serialPortPins">
-          <td [style.background]="'black'">{{ pin.pinDE9 }}</td>
-          <td [style.background]="'black'">{{ pin.pinDB25 }}</td>
-          <td [style.background]="'black'">{{ pin.signal }}</td>
-          <td [style.background]="'black'">{{ pin.description }}</td>
-          <td [style.background]="'black'">{{ pin.direction }}</td>
+          <td [style.background]="'#797979'">{{ pin.pinDE9 }}</td>
+          <td [style.background]="'#797979'">{{ pin.pinDB25 }}</td>
+          <td [style.background]="'#797979'">{{ pin.signal }}</td>
+          <td [style.background]="'#797979'">{{ pin.description }}</td>
+          <td [style.background]="'#797979'">{{ pin.direction }}</td>
         </tr>
       </tbody>
     </table>
@@ -47,9 +47,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let map of nullModemMapping">
-          <td [style.background]="'black'">{{ map.pinFrom }}</td>
-          <td [style.background]="'black'">{{ map.pinTo }}</td>
-          <td [style.background]="'black'">{{ map.signal }}</td>
+          <td [style.background]="'#797979'">{{ map.pinFrom }}</td>
+          <td [style.background]="'#797979'">{{ map.pinTo }}</td>
+          <td [style.background]="'#797979'">{{ map.signal }}</td>
         </tr>
       </tbody>
     </table>
@@ -69,9 +69,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let map of rj45Mapping">
-          <td [style.background]="'black'">{{ map.pinRj45 }}</td>
-          <td [style.background]="'black'">{{ map.pinDb9 }}</td>
-          <td [style.background]="'black'">{{ map.signal }}</td>
+          <td [style.background]="'#797979'">{{ map.pinRj45 }}</td>
+          <td [style.background]="'#797979'">{{ map.pinDb9 }}</td>
+          <td [style.background]="'#797979'">{{ map.signal }}</td>
         </tr>
       </tbody>
     </table>

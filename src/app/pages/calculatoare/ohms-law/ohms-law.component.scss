@@ -8,9 +8,12 @@
 
 .circuit-image {
   transform: translatey(31%);
-  width: 200px;
-  height: auto;
   margin-bottom: 20px;
+
+  margin-right: 1rem;
+  margin-left: 1rem;
+  width: 150px;
+  height: 150px;
 }
 
 .top-button {
@@ -41,4 +44,22 @@
 .nearest {
   margin-top: 20px;
   text-align: center;
+}
+
+
+img.circuit-image {
+  filter: invert(1); /* Schimbă culoarea pentru dark mode */
+}
+
+/* Aplica doar în dark mode */
+@media (prefers-color-scheme: dark) {
+  img.circuit-image {
+    filter: invert(1); /* Imaginea va avea un efect de inversare pentru dark mode */
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  img.circuit-image {
+    filter: none; /* Nu aplicăm niciun efect */
+  }
 }
