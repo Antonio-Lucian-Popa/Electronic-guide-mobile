@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Calculator</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Titlul calculatorului -->
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input [(ngModel)]="calculator.title" placeholder="Enter calculator title"></ion-input>
+  </ion-item>
+
+  <!-- Parametrii calculatorului -->
+  <h2>Parameters</h2>
+  <ion-list>
+    <ion-item *ngFor="let param of calculator.parameters; let i = index">
+      <ion-label position="stacked">Parameter {{ i + 1 }}</ion-label>
+      <ion-input [(ngModel)]="param.name" placeholder="Name"></ion-input>
+      <ion-input [(ngModel)]="param.key" placeholder="Key (e.g., V, R)"></ion-input>
+      <ion-input [(ngModel)]="param.defaultValue" placeholder="Default value"></ion-input>
+      <ion-button color="danger" fill="outline" (click)="removeParameter(i)">Remove</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="addParameter()">
+    Add Parameter
+  </ion-button>
+
+  <!-- Formula calculatorului -->
+  <h2>Formula</h2>
+  <ion-item>
+    <ion-label position="stacked">Formula</ion-label>
+    <ion-textarea
+      [(ngModel)]="calculator.formula"
+      placeholder="Enter formula (e.g., V * I)"
+    ></ion-textarea>
+  </ion-item>
+
+  <!-- Salvarea calculatorului -->
+  <ion-button expand="block" color="success" (click)="saveCalculator()">Save Calculator</ion-button>
+</ion-content>

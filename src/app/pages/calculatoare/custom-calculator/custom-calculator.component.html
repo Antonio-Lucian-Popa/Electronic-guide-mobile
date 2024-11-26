@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>{{ calculator.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="parameters-container">
+    <div *ngFor="let param of calculator.parameters" class="parameter-item">
+      <ion-item>
+        <ion-label>{{ param.name }} ({{ param.key }})</ion-label>
+        <ion-input [(ngModel)]="param.value"></ion-input>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="result-container">
+    <h3>Result:</h3>
+    <p>{{ result }}</p>
+  </div>
+
+  <ion-button expand="block" color="success" class="calculate-button" (click)="calculate()">Calculate</ion-button>
+</ion-content>

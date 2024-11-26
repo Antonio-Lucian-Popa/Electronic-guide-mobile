@@ -13,3 +13,24 @@
     Inductor Color Code
   </ion-item>
 </ion-list>
+
+<!-- Calculatoare personalizate -->
+<ion-list *ngIf="customCalculators.length > 0">
+  <ion-item *ngFor="let calculator of customCalculators">
+    <ion-icon name="create-outline" slot="start"></ion-icon>
+    <ion-label>{{ calculator.title }}</ion-label>
+    <ion-button fill="clear" color="primary" (click)="openCustomCalculator(calculator)">
+      Open
+    </ion-button>
+    <!-- <ion-button fill="clear" color="secondary" (click)="shareCalculator(calculator)">
+      Share
+    </ion-button> -->
+  </ion-item>
+</ion-list>
+
+<!-- FAB Button -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="openCreateCalculatorModal()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
