@@ -15,18 +15,18 @@
 </ion-list>
 
 <!-- Calculatoare personalizate -->
-<ion-list *ngIf="customCalculators.length > 0">
-  <ion-item *ngFor="let calculator of customCalculators">
-    <ion-icon name="create-outline" slot="start"></ion-icon>
+<ion-list>
+  <ion-item *ngFor="let calculator of customCalculators; let i = index">
     <ion-label>{{ calculator.title }}</ion-label>
-    <ion-button fill="clear" color="primary" (click)="openCustomCalculator(calculator)">
-      Open
+    <ion-button slot="end" color="danger" (click)="deleteCustomCalculator(i)">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
     </ion-button>
-    <!-- <ion-button fill="clear" color="secondary" (click)="shareCalculator(calculator)">
-      Share
-    </ion-button> -->
+    <ion-button slot="end" color="primary" (click)="openCustomCalculator(calculator)">
+      <ion-icon slot="icon-only" name="open"></ion-icon>
+    </ion-button>
   </ion-item>
 </ion-list>
+
 
 <!-- FAB Button -->
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">

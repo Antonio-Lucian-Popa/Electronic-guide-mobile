@@ -5,6 +5,7 @@ import { OhmsLawComponent } from './ohms-law/ohms-law.component';
 import { InductorColorCodeComponent } from './inductor-color-code/inductor-color-code.component';
 import { CustomCalculatorComponent } from './custom-calculator/custom-calculator.component';
 import { CreateCalculatorComponent } from './create-calculator/create-calculator.component';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-calculatoare',
@@ -20,52 +21,65 @@ export class CalculatoareComponent {
 
    customCalculators: any[] = []; // Lista calculatoarelor personalizate
 
-  constructor(private modalController: ModalController) {}
+   constructor(
+     private modalController: ModalController,
+     private storage: Storage
+   ) {
+     this.initStorage(); // Inițializarea Storage
+   }
 
-  async openModal(component: any) {
-    const modal = await this.modalController.create({
-      component: component,
-      cssClass: 'custom-modal-class', // Stil personalizat (opțional)
-    });
-    await modal.present();
-  }
+   async initStorage() {
+     await this.storage.create();
+     this.loadCustomCalculators(); // Încarcă calculatoarele salvate
+   }
 
-  // Deschide modal pentru calculatoare personalizate
-  async openCustomCalculator(calculator: any) {
-    const modal = await this.modalController.create({
-      component: CustomCalculatorComponent,
-      componentProps: { calculator },
-      cssClass: 'custom-modal-class',
-    });
-    await modal.present();
-  }
+   async loadCustomCalculators() {
+     const savedCalculators = await this.storage.get('customCalculators');
+     this.customCalculators = savedCalculators || [];
+   }
 
-  // Deschide modal pentru crearea unui calculator nou
-  async openCreateCalculatorModal() {
-    const modal = await this.modalController.create({
-      component: CreateCalculatorComponent,
-      cssClass: 'custom-modal-class',
-    });
+   async saveCustomCalculators() {
+     await this.storage.set('customCalculators', this.customCalculators);
+   }
 
-    modal.onDidDismiss().then((result) => {
-      if (result.data) {
-        this.customCalculators.push(result.data);
-      }
-    });
+   async openModal(component: any) {
+     const modal = await this.modalController.create({
+       component: component,
+       cssClass: 'custom-modal-class',
+     });
+     await modal.present();
+   }
 
-    await modal.present();
-  }
+   // Deschide un calculator personalizat
+   async openCustomCalculator(calculator: any) {
+     const modal = await this.modalController.create({
+       component: CustomCalculatorComponent,
+       componentProps: { calculator },
+       cssClass: 'custom-modal-class',
+     });
+     await modal.present();
+   }
 
-  // // Partajează un calculator personalizat
-  // async shareCalculator(calculator: any) {
-  //   const jsonData = encodeURIComponent(JSON.stringify(calculator));
-  //   const shareableLink = `electrodoc://create-calculator?data=${jsonData}`;
+   // Deschide modal pentru crearea unui calculator nou
+   async openCreateCalculatorModal() {
+     const modal = await this.modalController.create({
+       component: CreateCalculatorComponent,
+       cssClass: 'custom-modal-class',
+     });
 
-  //   await Clipboard.write({
-  //     string: shareableLink,
-  //   });
+     modal.onDidDismiss().then(async (result) => {
+       if (result.data) {
+         this.customCalculators.push(result.data);
+         await this.saveCustomCalculators(); // Salvează în Storage
+       }
+     });
 
-  //   alert('Link copied to clipboard!');
-  // }
+     await modal.present();
+   }
 
+   // Șterge un calculator personalizat
+   async deleteCustomCalculator(index: number) {
+     this.customCalculators.splice(index, 1);
+     await this.saveCustomCalculators();
+   }
 }
