@@ -6,6 +6,8 @@ import { InductorColorCodeComponent } from './inductor-color-code/inductor-color
 import { CustomCalculatorComponent } from './custom-calculator/custom-calculator.component';
 import { CreateCalculatorComponent } from './create-calculator/create-calculator.component';
 import { Storage } from '@ionic/storage-angular';
+import { Clipboard } from '@capacitor/clipboard';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calculatoare',
@@ -23,8 +25,13 @@ export class CalculatoareComponent {
 
    constructor(
      private modalController: ModalController,
-     private storage: Storage
+     private storage: Storage,
+     private router: Router
    ) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state && navigation.extras.state['calculator']) {
+      this.customCalculators.push(navigation.extras.state['calculator']);
+    }
      this.initStorage(); // Inițializarea Storage
    }
 
@@ -82,4 +89,17 @@ export class CalculatoareComponent {
      this.customCalculators.splice(index, 1);
      await this.saveCustomCalculators();
    }
+
+   async shareCalculator(calculator: any) {
+    // Codificăm calculatorul în JSON și îl includem în link
+    const jsonData = encodeURIComponent(JSON.stringify(calculator));
+    const shareableLink = `electronicguide://create-calculator?data=${jsonData}`;
+  
+    // Copiem link-ul în clipboard
+    await Clipboard.write({
+      string: shareableLink,
+    });
+  
+    alert('Link copied to clipboard! Share it with your friends.');
+  }
 }

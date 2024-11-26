@@ -4,6 +4,12 @@
       <ion-button (click)="closeModal()">Close</ion-button>
     </ion-buttons>
     <ion-title>{{ calculator.title }}</ion-title>
+    <ion-buttons slot="end">
+      <!-- Butonul de partajare -->
+      <ion-button (click)="shareCalculator()">
+        <ion-icon slot="icon-only" name="share-social"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

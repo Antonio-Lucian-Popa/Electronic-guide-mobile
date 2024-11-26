@@ -16,13 +16,11 @@
 
 <!-- Calculatoare personalizate -->
 <ion-list>
-  <ion-item *ngFor="let calculator of customCalculators; let i = index">
+  <ion-item *ngFor="let calculator of customCalculators; let i = index" (click)="openCustomCalculator(calculator)">
+    <ion-icon name="albums-outline" slot="start"></ion-icon>
     <ion-label>{{ calculator.title }}</ion-label>
     <ion-button slot="end" color="danger" (click)="deleteCustomCalculator(i)">
       <ion-icon slot="icon-only" name="trash"></ion-icon>
-    </ion-button>
-    <ion-button slot="end" color="primary" (click)="openCustomCalculator(calculator)">
-      <ion-icon slot="icon-only" name="open"></ion-icon>
     </ion-button>
   </ion-item>
 </ion-list>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Clipboard } from '@capacitor/clipboard';
 
 @Component({
   selector: 'app-custom-calculator',
@@ -34,6 +35,20 @@ export class CustomCalculatorComponent {
       this.result = NaN;
       alert('Invalid formula!');
     }
+  }
+
+   // Partajează calculatorul
+   async shareCalculator() {
+    // Convertește calculatorul în JSON și encodează-l
+    const calculatorData = encodeURIComponent(JSON.stringify(this.calculator));
+    const shareableLink = `myapp://create-calculator?data=${calculatorData}`;
+
+    // Copiază linkul în clipboard
+    await Clipboard.write({
+      string: shareableLink,
+    });
+
+    alert('Calculator link copied to clipboard! Share it with others.');
   }
 
 }

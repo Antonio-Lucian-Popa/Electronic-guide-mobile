@@ -26,13 +26,13 @@
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" color="primary" (click)="addParameter()">
+  <ion-button expand="block" color="primary" size="default" (click)="addParameter()">
     Add Parameter
   </ion-button>
 
   <!-- Formula calculatorului -->
   <h2>Formula</h2>
-  <ion-item>
+  <ion-item class="formula-item">
     <ion-label position="stacked">Formula</ion-label>
     <ion-textarea
       [(ngModel)]="calculator.formula"

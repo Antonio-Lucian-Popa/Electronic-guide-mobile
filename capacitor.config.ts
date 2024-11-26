@@ -4,6 +4,11 @@ const config: CapacitorConfig = {
   appId: 'com.asusoftware.app',
   appName: 'electronic-guide',
   webDir: 'www',
+  bundledWebRuntime: false,
+  server: {
+    androidScheme: 'https', // necesar pentru Android
+    hostname: 'myapp',
+  },
   plugins: {
     SplashScreen: {
       launchShowDuration: 2000,
