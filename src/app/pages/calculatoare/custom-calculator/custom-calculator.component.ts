@@ -39,16 +39,27 @@ export class CustomCalculatorComponent {
 
    // Partajează calculatorul
    async shareCalculator() {
-    // Convertește calculatorul în JSON și encodează-l
-    const calculatorData = encodeURIComponent(JSON.stringify(this.calculator));
-    const shareableLink = `myapp://create-calculator?data=${calculatorData}`;
-
-    // Copiază linkul în clipboard
-    await Clipboard.write({
-      string: shareableLink,
-    });
-
-    alert('Calculator link copied to clipboard! Share it with others.');
+    const jsonData = encodeURIComponent(JSON.stringify(this.calculator));
+    const httpLink = `https://example.com/create-calculator?data=${jsonData}`;
+  
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Custom Calculator',
+          text: 'Check out this custom calculator!',
+          url: httpLink,
+        });
+      } catch (error) {
+        console.error('Share failed:', error);
+      }
+    } else {
+      // Copiază linkul în clipboard
+      await Clipboard.write({
+        string: httpLink,
+      });
+      alert('Link copied to clipboard!');
+    }
   }
+  
 
 }

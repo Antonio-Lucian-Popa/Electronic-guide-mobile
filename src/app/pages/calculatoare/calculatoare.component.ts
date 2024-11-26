@@ -28,10 +28,14 @@ export class CalculatoareComponent {
      private storage: Storage,
      private router: Router
    ) {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras.state && navigation.extras.state['calculator']) {
-      this.customCalculators.push(navigation.extras.state['calculator']);
-    }
+   // Preia datele din state (dacă există)
+   const navigation = this.router.getCurrentNavigation();
+   const state = navigation?.extras.state;
+
+   if (state?.['customCalculator']) {
+     // Adaugă calculatorul primit în lista locală
+     this.customCalculators.push(state['customCalculator']);
+   }
      this.initStorage(); // Inițializarea Storage
    }
 
@@ -89,17 +93,4 @@ export class CalculatoareComponent {
      this.customCalculators.splice(index, 1);
      await this.saveCustomCalculators();
    }
-
-   async shareCalculator(calculator: any) {
-    // Codificăm calculatorul în JSON și îl includem în link
-    const jsonData = encodeURIComponent(JSON.stringify(calculator));
-    const shareableLink = `electronicguide://create-calculator?data=${jsonData}`;
-  
-    // Copiem link-ul în clipboard
-    await Clipboard.write({
-      string: shareableLink,
-    });
-  
-    alert('Link copied to clipboard! Share it with your friends.');
-  }
 }
