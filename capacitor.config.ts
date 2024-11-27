@@ -6,8 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'www',
   bundledWebRuntime: false,
   server: {
-    androidScheme: 'https', // necesar pentru Android
-    hostname: 'myapp',
+    androidScheme: 'myapp', // Configurat pentru schema personalizată
   },
   plugins: {
     SplashScreen: {

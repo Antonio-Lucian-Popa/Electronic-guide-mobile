@@ -25,6 +25,14 @@
   </ion-item>
 </ion-list>
 
+<ion-item>
+  <ion-label position="floating">Paste link here</ion-label>
+  <ion-input [(ngModel)]="pastedLink" placeholder="myapp://create-calculator?data=..."></ion-input>
+</ion-item>
+
+<ion-button expand="block" color="primary" (click)="importCalculator()">Import Calculator</ion-button>
+
+
 
 <!-- FAB Button -->
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">

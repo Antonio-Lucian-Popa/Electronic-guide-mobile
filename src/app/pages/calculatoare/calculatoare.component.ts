@@ -6,7 +6,6 @@ import { InductorColorCodeComponent } from './inductor-color-code/inductor-color
 import { CustomCalculatorComponent } from './custom-calculator/custom-calculator.component';
 import { CreateCalculatorComponent } from './create-calculator/create-calculator.component';
 import { Storage } from '@ionic/storage-angular';
-import { Clipboard } from '@capacitor/clipboard';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,6 +21,8 @@ export class CalculatoareComponent {
    InductorColorCodeComponent = InductorColorCodeComponent;
 
    customCalculators: any[] = []; // Lista calculatoarelor personalizate
+
+   pastedLink: string = ''; // Linkul lipit de utilizator
 
    constructor(
      private modalController: ModalController,
@@ -93,4 +94,70 @@ export class CalculatoareComponent {
      this.customCalculators.splice(index, 1);
      await this.saveCustomCalculators();
    }
+
+   // Salvează calculatoarele local
+  saveCalculatorsToStorage() {
+    localStorage.setItem('customCalculators', JSON.stringify(this.customCalculators));
+  }
+
+ // Importă calculatorul din linkul lipit
+ importCalculator() {
+  if (!this.pastedLink?.trim()) {
+    alert('Please paste a valid link.');
+    return;
+  }
+
+  try {
+    const link = this.pastedLink.trim();
+
+    // Verifică dacă linkul începe cu schema corectă
+    if (!link.startsWith('myapp://create-calculator')) {
+      alert('Invalid link. Please check the URL format.');
+      return;
+    }
+
+    // Obține partea cu parametrii
+    const queryString = link.split('?')[1];
+    const params = new URLSearchParams(queryString);
+
+    // Extrage datele calculatorului
+    const dataParam = params.get('data');
+    if (!dataParam) {
+      alert('No data found in the link.');
+      return;
+    }
+
+    // Decodifică și validează datele calculatorului
+    const calculatorData = JSON.parse(decodeURIComponent(dataParam));
+    if (!calculatorData.title || !calculatorData.parameters || !calculatorData.formula) {
+      alert('Invalid calculator data. Please ensure the link is correct.');
+      return;
+    }
+
+    // Verifică duplicatele
+    const existingCalculator = this.customCalculators.find(
+      (calc) => calc.title === calculatorData.title
+    );
+    if (existingCalculator) {
+      alert('A calculator with the same title already exists.');
+      return;
+    }
+
+    // Adaugă calculatorul la lista personalizată
+    this.customCalculators.push(calculatorData);
+
+    // Salvează în localStorage/Ionic Storage
+    this.saveCustomCalculators();
+
+    // Notifică utilizatorul
+    alert('Calculator imported and saved successfully!');
+    this.pastedLink = ''; // Golește câmpul de input
+  } catch (error) {
+    alert('Failed to import calculator. Please check the link.');
+    console.error('Error importing calculator:', error);
+  }
+}
+
+
+
 }
