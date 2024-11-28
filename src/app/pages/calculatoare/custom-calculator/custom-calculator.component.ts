@@ -10,7 +10,7 @@ import { Clipboard } from '@capacitor/clipboard';
 export class CustomCalculatorComponent {
 
   @Input() calculator: any;
-  result: number = 0;
+  result: any = 0;
 
   constructor(private modalController: ModalController) {}
 
@@ -21,26 +21,26 @@ export class CustomCalculatorComponent {
   calculate() {
     try {
       const formula = this.calculator.formula;
-      const values = this.calculator.parameters.reduce((acc: any, param: any) => {
-        acc[param.key] = param.value;
+  
+      // Creează un obiect cu cheile și valorile parametrilor
+      const paramValues = this.calculator.parameters.reduce((acc: any, param: any) => {
+        acc[param.key] = Number(param.value); // Convertim valorile în numere
         return acc;
       }, {});
-
-      // Evaluăm formula cu parametrii
-      this.result = new Function(
-        ...Object.keys(values),
-        `return ${formula};`
-      )(...Object.values(values));
+  
+      // Evaluăm formula folosind funcția `Function`
+      const resultFunction = new Function(...Object.keys(paramValues), `return ${formula};`);
+      this.result = resultFunction(...Object.values(paramValues));
     } catch (error) {
-      this.result = NaN;
-      alert('Invalid formula!');
+      console.error('Error calculating result:', error);
+      this.result = 'Error in formula';
     }
   }
 
    // Partajează calculatorul
    async shareCalculator() {
     const jsonData = encodeURIComponent(JSON.stringify(this.calculator));
-    const httpLink = `https://example.com/create-calculator?data=${jsonData}`;
+    const httpLink = `myapp://create-calculator?data=${jsonData}`;
   
     if (navigator.share) {
       try {

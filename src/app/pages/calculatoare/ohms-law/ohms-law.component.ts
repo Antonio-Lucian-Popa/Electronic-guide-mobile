@@ -61,11 +61,11 @@ export class OhmsLawComponent {
   getParameterValue(parameter: string): number {
     switch (parameter) {
       case 'I':
-        return parseFloat(this.current.toFixed(2)); // Formatează cu 2 zecimale
+        return parseInt(this.current.toFixed()); // Formatează cu 2 zecimale
       case 'V':
-        return parseFloat(this.voltage.toFixed(2)); // Formatează cu 2 zecimale
+        return parseInt(this.voltage.toFixed()); // Formatează cu 2 zecimale
       case 'R':
-        return parseFloat(this.resistance.toFixed(2)); // Formatează cu 2 zecimale
+        return parseInt(this.resistance.toFixed()); // Formatează cu 2 zecimale
       default:
         return 0;
     }

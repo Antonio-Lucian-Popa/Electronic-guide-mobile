@@ -14,13 +14,26 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <div *ngIf="calculator.description" class="description-container">
+    <h3>Description:</h3>
+    <p>{{ calculator.description }}</p>
+  </div>
   <div class="parameters-container">
     <div *ngFor="let param of calculator.parameters" class="parameter-item">
-      <ion-item>
-        <ion-label>{{ param.name }} ({{ param.key }})</ion-label>
-        <ion-input [(ngModel)]="param.value"></ion-input>
-      </ion-item>
+      <ion-item class="container-custom-calculator">
+        <ion-input 
+        [(ngModel)]="param.value" 
+        [label]="param.name + ' -> (' + param.key + '):'" 
+        label-placement="floating">
+      </ion-input>
+    </ion-item>
     </div>
+  </div>
+
+
+  <div class="formula-container">
+    <h3>Formula:</h3>
+    <p>{{ calculator.formula }}</p>
   </div>
 
   <div class="result-container">

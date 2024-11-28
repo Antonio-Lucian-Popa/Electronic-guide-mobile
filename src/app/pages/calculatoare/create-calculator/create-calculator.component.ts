@@ -10,6 +10,7 @@ export class CreateCalculatorComponent {
 
   calculator: any = {
     title: '',
+    description: '',
     parameters: [],
     formula: '',
   };

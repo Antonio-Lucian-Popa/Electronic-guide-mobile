@@ -5,9 +5,6 @@ const config: CapacitorConfig = {
   appName: 'electronic-guide',
   webDir: 'www',
   bundledWebRuntime: false,
-  server: {
-    androidScheme: 'myapp', // Configurat pentru schema personalizată
-  },
   plugins: {
     SplashScreen: {
       launchShowDuration: 2000,

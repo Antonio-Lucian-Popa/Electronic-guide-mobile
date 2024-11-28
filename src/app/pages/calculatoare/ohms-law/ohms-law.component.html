@@ -11,13 +11,13 @@
   <div class="circuit-container">
     <!-- Butoanele pentru introducerea valorilor -->
     <ion-button class="top-button" (click)="openInputDialog('I')">
-      I {{ current.toFixed(2) }} A
+      I {{ current.toFixed() }} A
     </ion-button>
     <ion-button class="left-button" (click)="openInputDialog('V')">
-      V {{ voltage.toFixed(2) }} V
+      V {{ voltage.toFixed() }} V
     </ion-button>
     <ion-button class="right-button" (click)="openInputDialog('R')">
-      R {{ resistance.toFixed(2) }} Ω
+      R {{ resistance.toFixed() }} Ω
     </ion-button>
 
     <!-- Imaginea circuitului -->
@@ -25,7 +25,7 @@
 
     <!-- Puterea calculată -->
     <ion-button expand="block" color="success" class="power-button">
-      Power {{ power.toFixed(2) }} W
+      Power {{ power.toFixed() }} W
     </ion-button>
   </div>
 
