@@ -85,9 +85,9 @@ export class ResistorColorCodeComponent {
   }
 
   // Închide modalul curent
-async closeModal() {
-  await this.modalController.dismiss();
-}
+  async closeModal() {
+    await this.modalController.dismiss();
+  }
 
 
 }

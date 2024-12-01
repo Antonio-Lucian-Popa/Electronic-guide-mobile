@@ -24,7 +24,7 @@
     <ion-item *ngFor="let param of calculator.parameters; let i = index">
       <ion-label position="stacked">Parameter {{ i + 1 }}</ion-label>
       <ion-input [(ngModel)]="param.name" placeholder="Name"></ion-input>
-      <ion-input [(ngModel)]="param.key" placeholder="Key (e.g., V, R)"></ion-input>
+      <ion-input [(ngModel)]="param.key" placeholder="U.M (e.g., V, R)"></ion-input>
       <ion-input [(ngModel)]="param.defaultValue" placeholder="Default value"></ion-input>
       <ion-button color="danger" fill="outline" (click)="removeParameter(i)">Remove</ion-button>
     </ion-item>

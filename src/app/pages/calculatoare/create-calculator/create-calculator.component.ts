@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { all, create } from 'mathjs';
 
 @Component({
   selector: 'app-create-calculator',
@@ -15,7 +16,10 @@ export class CreateCalculatorComponent {
     formula: '',
   };
 
-  constructor(private modalController: ModalController) { }
+  // Instanță math.js
+  math = create(all);
+
+  constructor(private modalController: ModalController) {}
 
   // Închide modalul
   closeModal() {
@@ -68,16 +72,25 @@ export class CreateCalculatorComponent {
       }
     }
 
-    // Validăm dacă formula conține toate cheile parametrilor
-    const formulaKeys = this.calculator.formula.match(/[a-zA-Z]+/g) || [];
-    const missingKeys = formulaKeys.filter((key: any) => !this.calculator.parameters.some((param: any) => param.key === key));
+    // Lista funcțiilor disponibile în math.js
+    const mathFunctions = Object.keys(this.math);
+
+    // Extrage toate cheile din formula
+    const formulaKeys = this.calculator.formula.match(/[a-zA-Z_]+/g) || [];
+
+    // Verificăm dacă există chei necunoscute care nu sunt parametri sau funcții math.js
+    const missingKeys = formulaKeys.filter(
+      (key: any) =>
+        !this.calculator.parameters.some((param: any) => param.key === key) &&
+        !mathFunctions.includes(key)
+    );
+
     if (missingKeys.length > 0) {
-      alert(`The formula contains undefined keys: ${missingKeys.join(', ')}.`);
+      alert(`The formula contains undefined keys or invalid functions: ${missingKeys.join(', ')}.`);
       return;
     }
 
     // Dacă toate validările sunt trecute, trimitem calculatorul către modal
     this.modalController.dismiss(this.calculator);
   }
-
 }
